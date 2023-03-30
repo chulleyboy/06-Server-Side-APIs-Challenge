@@ -1,0 +1,89 @@
+header {
+	background-color: rgb(0, 60, 255);
+	text-align: center;
+}
+#search-section {
+	display: flex;
+	flex-direction: column;
+	height: 1000px;
+	width: 34%;
+	position: absolute;
+	text-align: center;
+}
+#search-content {
+	display: flex;
+	flex-direction: column;
+}
+#search-text{
+	margin: 5px;
+	font-size: 32px;
+}
+#search-input{
+	border-radius: 3px;
+	margin: 5px;
+	height: 30px;
+}
+#search-button{
+	border-radius: 3px;
+	margin: 5px;
+	height: 30px;
+}
+#search-history{
+	display: flex;
+	flex-direction: column;
+	border-top: 2px solid black;
+}
+.history-button{
+	border-radius: 3px;
+	margin: 5px;
+	height: 30px;
+}
+#weather-section {
+	width: 64%;
+	position: absolute;
+	right: 0px
+}
+#current-weather {
+	border: 2px solid black;
+	background-color: rgb(50, 150, 255);
+	height: 200px;
+}
+#weather-header{
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+}
+#city{
+	font-size: 24px;
+}
+#date{
+	margin-left: 10px;
+	font-size: 24px;
+}
+#icon{
+	margin: 10px;
+}
+#weather-info{
+	margin: 10px;
+}
+#forecast-header{
+	font-size: 32px;
+}
+#forecast-boxes{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.forecast{
+	border: 2px solid black;
+	background-color: rgb(50, 150, 255);
+	height: 240px;
+	width: 240px;
+	margin-top: 10px;
+}
+.forecast-content{
+	margin: 10px;
+}
+main {
+	position: relative;
+}
