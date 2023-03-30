@@ -23,7 +23,7 @@ document.addEventListener('click', event => {
   });
 
 
-// searches for the weather data
+// searches for the weather data and updates page
 function weather (cityName) {
 	// find the coordinates with city name
 	fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`)
@@ -31,7 +31,6 @@ function weather (cityName) {
     .then(data => {
       if (data.length > 0) {
         const { lat, lon } = data[0];
-        console.log(`Latitude: ${lat}, Longitude: ${lon}`);
 
 		// find the weather using coordinates
 		fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`)
@@ -46,14 +45,13 @@ function weather (cityName) {
 		  windSpeedEl.textContent = `Wind Speed: ${data.list[0].wind.speed} MPH`;
 		  // set forecast information
 		  for(let i=1; i<6; i++) {
-			console.log(i)
 			document.getElementById(`date-forecast-${i}`).textContent = dayjs().add(i, 'day').format('M/D/YYYY');
 			document.getElementById(`icon-forecast-${i}`).setAttribute("src", `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`);
 			document.getElementById(`temperature-forecast-${i}`).textContent = `Temperature: ${Math.round(ktof(data.list[i].main.temp))} °F`;
 			document.getElementById(`humidity-forecast-${i}`).textContent = `Humidity: ${data.list[i].main.humidity}%`;
 			document.getElementById(`wind-speed-forecast-${i}`).textContent = `Wind Speed: ${data.list[i].wind.speed} MPH`;
 		  }
-		// 
+		// checks if the search term is already in search history, updates search hitsory if it is not
 		var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 		if(searchHistory === null){
 			searchHistory = [data.city.name];
@@ -73,7 +71,6 @@ function weather (cityName) {
 			}
 
 		}
-		console.log(searchHistory);
 		localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 		renderHistory()
 		})
